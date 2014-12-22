@@ -24,10 +24,9 @@ class Shape a where
 instance Shape Triangle where
   simple                   = Triangle (0, 0) (1, 0) (0, 1)
   rotate  (Triangle x y z) = Triangle z x y
-  surface (Triangle x y z) = 0.5 * sqrt ((norm v1) ^ 2 * (norm v2) ^ 2 - (inner v1 v2) ^ 2)
-    where
-      v1 = subt x y
-      v2 = subt x z
+  surface (Triangle x y z) = 0.5 * sqrt ((norm v1) ^ 2 * (norm v2) ^ 2 - (v1 `inner` v2) ^ 2)
+    where v1 = subt x y
+          v2 = subt x z
 
 instance Shape Square where
   simple                   = Square (0, 0) (1, 0) (1, 1) (0, 1)
