@@ -31,7 +31,7 @@ instance Shape Triangle where
 instance Shape Square where
   simple                   = Square (0, 0) (1, 0) (1, 1) (0, 1)
   rotate  (Square w x y z) = Square z w x y
-  surface (Square w x y z) = 0.0
+  surface (Square w x y z) = surface (Triangle w x y) + surface (Triangle z x y)
 
 instance Shape Circle where
   simple               = Circle (0, 0) 1
